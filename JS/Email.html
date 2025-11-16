@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+    
+</head>
+<body>
+
+    <h3>Email</h3>
+
+    <form onsubmit="return validateEmail()">
+
+        <div class="input-row">
+            <input type="text" id="email" placeholder="sample@example.com">
+            <div id="infoBtn" onclick="toggleHint()">i</div>
+        </div>
+
+        <div id="hint">hint: sample@example.com</div>
+
+        <button type="submit">Submit</button>
+
+        <p id="error"></p>
+    </form>
+
+    <script>
+        function toggleHint() {
+            let h = document.getElementById("hint");
+            h.style.display = h.style.display === "block" ? "none" : "block";
+        }
+
+        function validateEmail() {
+            let email = document.getElementById("email").value.trim();
+            let error = document.getElementById("error");
+
+            
+            if (email === "") {
+                error.textContent = "Email cannot be empty.";
+                return false;
+            }
+
+            
+            let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!pattern.test(email)) {
+                error.textContent = "Must be a valid email address.";
+                return false;
+            }
+
+            error.textContent = "Form submitted successfully!";
+            error.style.color = "green";
+            return false; 
+        }
+    </script>
+
+</body>
+</html>

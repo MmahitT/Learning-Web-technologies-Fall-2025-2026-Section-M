@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Validation</title>
+   
+</head>
+<body>
+
+    <h3>Name</h3>
+
+    <form onsubmit="return validateName()">
+        <input type="text" id="name" placeholder="Enter your name">
+        <button type="submit">Submit</button>
+        <p id="error"></p>
+    </form>
+
+    <script>
+        function validateName() {
+            let name = document.getElementById("name").value.trim();
+            let error = document.getElementById("error");
+
+           
+            if (name === "") {
+                error.textContent = "Name cannot be empty.";
+                error.style.color="red";
+                return false;
+            }
+
+            
+            let words = name.split(/\s+/);
+            if (words.length < 2) {
+                error.textContent = "Name must contain at least two words.";
+                return false;
+            }
+
+            let pattern = /^[A-Za-z][A-Za-z.\-\s]*$/;
+            if (!pattern.test(name)) {
+                error.textContent = "Name must start with a letter and contain only letters, dot(.), dash(-), or spaces.";
+                return false;
+            }
+
+            error.textContent = "Form submitted successfully!";
+            error.style.color = "green";
+            return false; 
+        }
+    </script>
+
+    
+
+</body>
+</html>
