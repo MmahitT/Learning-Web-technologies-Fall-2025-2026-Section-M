@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gender Form</title>
+</head>
+<body>
+
+<form id="genderForm">
+    <fieldset style="width: 250px;">
+        <legend>Gender</legend>
+
+        <label>
+            <input type="radio" name="gender" value="Male"> Male
+        </label>
+
+        <label>
+            <input type="radio" name="gender" value="Female"> Female
+        </label>
+
+        <label>
+            <input type="radio" name="gender" value="Other"> Other
+        </label>
+    </fieldset>
+
+    <br>
+
+    <button type="button" onclick="submitGender()">Submit</button>
+</form>
+
+<p id="result" style="font-weight: bold; margin-top: 10px;"></p>
+
+<script>
+function submitGender() {
+    const gender = document.querySelector('input[name="gender"]:checked');
+
+    if (gender) {
+        document.getElementById("result").innerText = "Selected Gender: " + gender.value;
+    } else {
+        document.getElementById("result").innerText = "Please select a gender.";
+    }
+}
+</script>
+
+</body>
+</html>
